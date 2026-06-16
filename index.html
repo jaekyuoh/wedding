@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>재광 ♥ 메이의 결혼식에 초대합니다</title>
+<title data-i18n="page.title">재광 ♥ 메이의 결혼식에 초대합니다</title>
 
 <!-- 카카오톡 공유 미리보기용 메타태그 (배포 후 URL/이미지 경로 수정) -->
 <meta property="og:title" content="재광 ♥ 메이 결혼합니다">
@@ -177,9 +177,22 @@ body{
 
 .fade{opacity:0;transform:translateY(24px);transition:.9s ease}
 .fade.in{opacity:1;transform:none}
+
+/* ===== LANG TOGGLE ===== */
+.lang-toggle{position:fixed;top:14px;right:14px;z-index:50;
+  background:rgba(251,248,243,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:30px;display:flex;overflow:hidden;
+  font-family:'Nanum Myeongjo',serif;font-size:11px;letter-spacing:.12em}
+.lang-toggle button{background:none;border:none;padding:7px 13px;cursor:pointer;
+  color:var(--soft);font:inherit;transition:.2s}
+.lang-toggle button.active{background:var(--sage);color:#fff}
 </style>
 </head>
 <body>
+<div class="lang-toggle">
+  <button data-lang="ko" class="active">KR</button>
+  <button data-lang="en">EN</button>
+</div>
 <div class="phone">
 
   <!-- HERO -->
@@ -187,7 +200,7 @@ body{
     <div class="hero-frame">
       <img class="hero-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="메인 사진">
     </div>
-    <p class="hero-names serif">재광<span class="amp">&</span>메이</p>
+    <p class="hero-names serif" data-i18n-html="hero.names">재광<span class="amp">&</span>메이</p>
     <p class="hero-date">2026 · 08 · 08 SAT 1:30 PM</p>
     <div class="hero-line"></div>
   </header>
@@ -195,12 +208,12 @@ body{
   <!-- GREETING -->
   <section class="section greet fade">
     <p class="eyebrow">Invitation</p>
-    <h2>소중한 분들을 초대합니다</h2>
-    <p>서로 마주보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며<br>걸어가려 합니다.</p>
-    <p>저희 두 사람이 새로운 시작을 하는 날<br>귀한 걸음으로 축복해 주시면<br>더없는 기쁨으로 간직하겠습니다.</p>
+    <h2 data-i18n="greet.title">소중한 분들을 초대합니다</h2>
+    <p data-i18n-html="greet.p1">서로 마주보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며<br>걸어가려 합니다.</p>
+    <p data-i18n-html="greet.p2">저희 두 사람이 새로운 시작을 하는 날<br>귀한 걸음으로 축복해 주시면<br>더없는 기쁨으로 간직하겠습니다.</p>
     <div class="parents">
-      <div><b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>재광</b></div>
-      <div><b>메이</b></div>
+      <div data-i18n-html="greet.groom"><b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>재광</b></div>
+      <div data-i18n-html="greet.bride"><b>메이</b></div>
     </div>
   </section>
 
@@ -209,10 +222,10 @@ body{
   <!-- CALENDAR -->
   <section class="section fade">
     <p class="eyebrow">The Date</p>
-    <p class="cal-date serif" style="margin-top:14px">2026년 8월 8일</p>
-    <p class="cal-sub">토요일 오후 1시 30분</p>
+    <p class="cal-date serif" style="margin-top:14px" data-i18n="cal.date">2026년 8월 8일</p>
+    <p class="cal-sub" data-i18n="cal.sub">토요일 오후 1시 30분</p>
     <table class="cal">
-      <thead><tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>
+      <thead><tr><th class="sun" data-i18n="cal.sun">일</th><th data-i18n="cal.mon">월</th><th data-i18n="cal.tue">화</th><th data-i18n="cal.wed">수</th><th data-i18n="cal.thu">목</th><th data-i18n="cal.fri">금</th><th data-i18n="cal.sat">토</th></tr></thead>
       <tbody>
         <tr><td class="sun"></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
         <tr><td class="sun">2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td class="mark"><span>8</span></td></tr>
@@ -229,7 +242,7 @@ body{
   <!-- GALLERY -->
   <section class="section fade" style="padding-left:0;padding-right:0">
     <p class="eyebrow">Gallery</p>
-    <h2 style="margin-bottom:22px">우리의 순간들</h2>
+    <h2 style="margin-bottom:22px" data-i18n="gallery.title">우리의 순간들</h2>
     <div class="gallery-wrap">
       <div class="slides" id="slides">
         <div class="slide"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="갤러리1"></div>
@@ -240,7 +253,7 @@ body{
       </div>
     </div>
     <div class="dots" id="dots"></div>
-    <p class="tap-hint">사진을 탭하면 크게 볼 수 있어요</p>
+    <p class="tap-hint" data-i18n="gallery.hint">사진을 탭하면 크게 볼 수 있어요</p>
   </section>
 
   <div class="divider"><span>✦</span></div>
@@ -248,13 +261,13 @@ body{
   <!-- MAP -->
   <section class="section fade">
     <p class="eyebrow">Location</p>
-    <h2 style="margin-bottom:18px">오시는 길</h2>
-    <p class="venue-name serif">더 바실리움</p>
-    <p class="venue-addr">경기도 성남시 분당구 양현로 322<button class="copy mini" data-acc="경기도 성남시 분당구 양현로 322" data-msg="주소가 복사되었습니다" aria-label="주소 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><br>(야탑동 344-1번지)</p>
+    <h2 style="margin-bottom:18px" data-i18n="map.title">오시는 길</h2>
+    <p class="venue-name serif" data-i18n="map.venue">더 바실리움</p>
+    <p class="venue-addr" data-i18n-html="map.addr">경기도 성남시 분당구 양현로 322<button class="copy mini" data-acc="경기도 성남시 분당구 양현로 322" data-toast="address" aria-label="주소 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><br>(야탑동 344-1번지)</p>
     <p class="venue-tel"><a href="tel:0317887070">031-788-7070</a></p>
 
     <div id="map"><img id="mapImg" src="resource/location.jpg" alt="더 바실리움 약도 및 오시는 길"></div>
-    <p class="map-hint">약도를 탭하면 크게 볼 수 있어요</p>
+    <p class="map-hint" data-i18n="map.hint">약도를 탭하면 크게 볼 수 있어요</p>
 
     <div class="nav-btns">
       <a href="https://map.kakao.com/link/search/더 바실리움" target="_blank">카카오맵</a>
@@ -268,25 +281,25 @@ body{
   <!-- CONTACT & ACCOUNT -->
   <section class="section fade">
     <p class="eyebrow">Contact</p>
-    <h2 style="margin-bottom:24px">연락하기</h2>
+    <h2 style="margin-bottom:24px" data-i18n="contact.title">연락하기</h2>
     <div class="contact-row" style="margin-bottom:14px">
-      <a href="tel:01012345678"><span class="circle">📞</span>신랑에게</a>
-      <a href="sms:01012345678"><span class="circle">✉️</span>문자하기</a>
-      <a href="tel:01087654321"><span class="circle">📞</span>신부에게</a>
+      <a href="tel:01012345678"><span class="circle">📞</span><span data-i18n="contact.groom">신랑에게</span></a>
+      <a href="sms:01012345678"><span class="circle">✉️</span><span data-i18n="contact.sms">문자하기</span></a>
+      <a href="tel:01087654321"><span class="circle">📞</span><span data-i18n="contact.bride">신부에게</span></a>
     </div>
 
     <div class="acc" id="acc">
       <div class="acc-head" onclick="this.parentNode.classList.toggle('open')">
-        <span>💛 마음 전하실 곳</span><span class="arrow">▾</span>
+        <span data-i18n="acc.heart">💛 마음 전하실 곳</span><span class="arrow">▾</span>
       </div>
       <div class="acc-body">
         <div class="acc-item">
-          <div><div class="who">신랑 재광</div><div class="num">하나 123-456789-01234</div></div>
-          <button class="copy" data-acc="하나 123-456789-01234">복사</button>
+          <div><div class="who" data-i18n="acc.groom">신랑 재광</div><div class="num" data-i18n="acc.groomNum">하나 123-456789-01234</div></div>
+          <button class="copy" data-acc="하나 123-456789-01234" data-toast="account" data-i18n="acc.copy">복사</button>
         </div>
         <div class="acc-item">
-          <div><div class="who">신부 메이</div><div class="num">국민 9876-54-321098</div></div>
-          <button class="copy" data-acc="국민 9876-54-321098">복사</button>
+          <div><div class="who" data-i18n="acc.bride">신부 메이</div><div class="num" data-i18n="acc.brideNum">국민 9876-54-321098</div></div>
+          <button class="copy" data-acc="국민 9876-54-321098" data-toast="account" data-i18n="acc.copy">복사</button>
         </div>
       </div>
     </div>
@@ -295,9 +308,9 @@ body{
   <!-- FOOTER -->
   <footer class="footer fade">
     <p class="ev serif" style="letter-spacing:.3em;font-size:12px">THANK YOU</p>
-    <p class="names">재광 ♥ 메이</p>
-    <p class="thx">저희의 시작을 함께해 주셔서<br>진심으로 감사합니다.</p>
-    <button class="share" onclick="shareKakao()">💬 카카오톡으로 공유하기</button>
+    <p class="names" data-i18n="footer.names">재광 ♥ 메이</p>
+    <p class="thx" data-i18n-html="footer.thx">저희의 시작을 함께해 주셔서<br>진심으로 감사합니다.</p>
+    <button class="share" onclick="shareKakao()" data-i18n="footer.share">💬 카카오톡으로 공유하기</button>
   </footer>
 
 </div>
@@ -311,6 +324,72 @@ body{
 <div class="toast" id="toast"></div>
 
 <script>
+// ===== i18n =====
+const ADDR_COPY_BTN = (lbl)=>`<button class="copy mini" data-acc="__ADDR__" data-toast="address" aria-label="${lbl}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>`;
+const i18n = {
+  ko: {
+    'page.title':'재광 ♥ 메이의 결혼식에 초대합니다',
+    'hero.names':'재광<span class="amp">&</span>메이',
+    'greet.title':'소중한 분들을 초대합니다',
+    'greet.p1':'서로 마주보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며<br>걸어가려 합니다.',
+    'greet.p2':'저희 두 사람이 새로운 시작을 하는 날<br>귀한 걸음으로 축복해 주시면<br>더없는 기쁨으로 간직하겠습니다.',
+    'greet.groom':'<b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>재광</b>',
+    'greet.bride':'<b>메이</b>',
+    'cal.date':'2026년 8월 8일','cal.sub':'토요일 오후 1시 30분',
+    'cal.sun':'일','cal.mon':'월','cal.tue':'화','cal.wed':'수','cal.thu':'목','cal.fri':'금','cal.sat':'토',
+    'gallery.title':'우리의 순간들','gallery.hint':'사진을 탭하면 크게 볼 수 있어요',
+    'map.title':'오시는 길','map.venue':'더 바실리움',
+    'map.addr':'경기도 성남시 분당구 양현로 322'+ADDR_COPY_BTN('주소 복사').replace('__ADDR__','경기도 성남시 분당구 양현로 322')+'<br>(야탑동 344-1번지)',
+    'map.hint':'약도를 탭하면 크게 볼 수 있어요',
+    'contact.title':'연락하기','contact.groom':'신랑에게','contact.sms':'문자하기','contact.bride':'신부에게',
+    'acc.heart':'💛 마음 전하실 곳',
+    'acc.groom':'신랑 재광','acc.groomNum':'하나 123-456789-01234',
+    'acc.bride':'신부 메이','acc.brideNum':'국민 9876-54-321098','acc.copy':'복사',
+    'footer.names':'재광 ♥ 메이','footer.thx':'저희의 시작을 함께해 주셔서<br>진심으로 감사합니다.','footer.share':'💬 카카오톡으로 공유하기',
+    'toast.address':'주소가 복사되었습니다','toast.account':'계좌번호가 복사되었습니다','toast.link':'링크가 복사되었습니다',
+    'share.title':'재광 ♥ 메이 결혼합니다','share.text':'2026.08.08 토 오후1시30분 더 바실리움'
+  },
+  en: {
+    'page.title':'The Wedding of Jaekwang & May',
+    'hero.names':'Jaekwang<span class="amp">&</span>May',
+    'greet.title':'You are warmly invited',
+    'greet.p1':'Two hearts that grew side by side<br>now turn together<br>to walk toward one horizon.',
+    'greet.p2':'On the day we begin our new chapter,<br>your presence and blessing<br>would mean the world to us.',
+    'greet.groom':'<span class="role">Groom</span> <b>Jaekwang</b>',
+    'greet.bride':'<span class="role">Bride</span> <b>May</b>',
+    'cal.date':'August 8, 2026','cal.sub':'Saturday · 1:30 PM',
+    'cal.sun':'S','cal.mon':'M','cal.tue':'T','cal.wed':'W','cal.thu':'T','cal.fri':'F','cal.sat':'S',
+    'gallery.title':'Our Moments','gallery.hint':'Tap a photo to enlarge',
+    'map.title':'How to Get Here','map.venue':'The Basilium',
+    'map.addr':'322, Yanghyeon-ro, Bundang-gu, Seongnam-si, Gyeonggi-do'+ADDR_COPY_BTN('Copy address').replace('__ADDR__','322 Yanghyeon-ro, Bundang-gu, Seongnam-si, Gyeonggi-do')+'<br>(Yatap-dong 344-1)',
+    'map.hint':'Tap the map to enlarge',
+    'contact.title':'Get in Touch','contact.groom':'Call Groom','contact.sms':'Send SMS','contact.bride':'Call Bride',
+    'acc.heart':'💛 With our gratitude',
+    'acc.groom':'Groom · Jaekwang','acc.groomNum':'Hana 123-456789-01234',
+    'acc.bride':'Bride · May','acc.brideNum':'KB 9876-54-321098','acc.copy':'Copy',
+    'footer.names':'Jaekwang ♥ May','footer.thx':'Thank you for sharing<br>the beginning of our journey.','footer.share':'💬 Share via KakaoTalk',
+    'toast.address':'Address copied','toast.account':'Account number copied','toast.link':'Link copied',
+    'share.title':'Jaekwang & May are getting married','share.text':'Aug 8, 2026 · Sat 1:30 PM · The Basilium'
+  }
+};
+let currentLang='ko';
+const t = key => (i18n[currentLang]||i18n.ko)[key] ?? key;
+function applyLang(lang){
+  currentLang = i18n[lang] ? lang : 'ko';
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=t(el.dataset.i18n); if(v!=null) el.textContent=v;});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const v=t(el.dataset.i18nHtml); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.lang===currentLang));
+}
+function detectLang(){
+  const saved=localStorage.getItem('lang');
+  if(saved && i18n[saved]) return saved;
+  return (navigator.language||'').toLowerCase().startsWith('ko') ? 'ko' : 'en';
+}
+document.querySelectorAll('.lang-toggle button').forEach(b=>{
+  b.addEventListener('click',()=>{localStorage.setItem('lang',b.dataset.lang); applyLang(b.dataset.lang);});
+});
+
 // ===== Gallery dots + lightbox =====
 const slides=document.getElementById('slides');
 const slideEls=slides.querySelectorAll('.slide');
@@ -329,27 +408,31 @@ document.getElementById('mapImg').addEventListener('click',()=>openLb('resource/
 function closeLb(){document.getElementById('lightbox').classList.remove('open');}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLb();});
 
-// ===== Copy account =====
-document.querySelectorAll('.copy').forEach(b=>{
-  b.addEventListener('click',()=>{
-    navigator.clipboard.writeText(b.dataset.acc).then(()=>toast(b.dataset.msg||'계좌번호가 복사되었습니다'));
+// ===== Copy (delegated — map.addr is re-rendered on lang switch) =====
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('.copy'); if(!btn) return;
+  navigator.clipboard.writeText(btn.dataset.acc).then(()=>{
+    toast(t(`toast.${btn.dataset.toast||'account'}`));
   });
 });
 
 // ===== Toast =====
 let tT;
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),1800);}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');
+  clearTimeout(tT);tT=setTimeout(()=>el.classList.remove('show'),1800);}
 
 // ===== Share =====
 function shareKakao(){
-  if(navigator.share){navigator.share({title:'재광 ♥ 메이 결혼합니다',text:'2026.08.08 토 오후1시30분 더 바실리움',url:location.href});}
-  else{navigator.clipboard.writeText(location.href).then(()=>toast('링크가 복사되었습니다'));}
+  if(navigator.share){navigator.share({title:t('share.title'),text:t('share.text'),url:location.href});}
+  else{navigator.clipboard.writeText(location.href).then(()=>toast(t('toast.link')));}
 }
 
 // ===== Scroll reveal =====
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.15});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+// ===== Initial lang =====
+applyLang(detectLang());
 </script>
 </body>
 </html>
