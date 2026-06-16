@@ -7,7 +7,7 @@
 
 <!-- 카카오톡 공유 미리보기용 메타태그 (배포 후 URL/이미지 경로 수정) -->
 <meta property="og:title" content="재광 ♥ 메이 결혼합니다">
-<meta property="og:description" content="2026년 10월 17일 토요일 오후 1시 · 더 바실리움">
+<meta property="og:description" content="2026년 8월 8일 토요일 오후 1시 30분 · 더 바실리움">
 <meta property="og:type" content="website">
 <!-- <meta property="og:image" content="https://내주소/img/main.jpg"> -->
 
@@ -116,9 +116,11 @@ body{
 /* ===== MAP ===== */
 .venue-name{font-family:'Nanum Myeongjo',serif;font-size:19px;font-weight:700}
 .venue-addr{color:var(--soft);margin-top:8px;font-size:14px}
-#map{width:100%;height:240px;margin-top:24px;background:#e8e3d8;border:1px solid var(--line)}
-.map-fallback{display:flex;align-items:center;justify-content:center;height:100%;
-  color:var(--soft);font-size:13px;text-align:center;padding:20px;line-height:1.7}
+.venue-tel{margin-top:6px;font-size:14px}
+.venue-tel a{color:var(--sage);text-decoration:none;letter-spacing:.05em}
+#map{width:100%;margin-top:24px}
+#map img{width:100%;display:block;cursor:zoom-in;border:1px solid var(--line)}
+.map-hint{font-size:12px;color:var(--soft);margin-top:10px;letter-spacing:.05em}
 .nav-btns{display:flex;gap:8px;margin-top:14px}
 .nav-btns a{
   flex:1;padding:13px 0;border:1px solid var(--line);background:#fff;
@@ -155,6 +157,8 @@ body{
   font-size:12px;color:var(--sage);cursor:pointer;border-radius:2px;white-space:nowrap;
   font-family:'Gowun Batang',serif}
 .copy:active{background:var(--sage);color:#fff}
+.copy.mini{padding:4px 6px;margin-left:8px;vertical-align:middle;line-height:0}
+.copy.mini svg{display:block;width:13px;height:13px}
 
 /* ===== FOOTER ===== */
 .footer{text-align:center;padding:54px 34px 70px;background:var(--ink);color:#cfc9bc}
@@ -184,7 +188,7 @@ body{
       <img class="hero-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="메인 사진">
     </div>
     <p class="hero-names serif">재광<span class="amp">&</span>메이</p>
-    <p class="hero-date">2026 · 10 · 17 SAT 1:00 PM</p>
+    <p class="hero-date">2026 · 08 · 08 SAT 1:30 PM</p>
     <div class="hero-line"></div>
   </header>
 
@@ -205,16 +209,17 @@ body{
   <!-- CALENDAR -->
   <section class="section fade">
     <p class="eyebrow">The Date</p>
-    <p class="cal-date serif" style="margin-top:14px">2026년 10월 17일</p>
-    <p class="cal-sub">토요일 오후 1시</p>
+    <p class="cal-date serif" style="margin-top:14px">2026년 8월 8일</p>
+    <p class="cal-sub">토요일 오후 1시 30분</p>
     <table class="cal">
       <thead><tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>
       <tbody>
-        <tr><td class="sun"></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td></tr>
-        <tr><td class="sun">4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
-        <tr><td class="sun">11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td class="mark"><span>17</span></td></tr>
-        <tr><td class="sun">18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
-        <tr><td class="sun">25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
+        <tr><td class="sun"></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+        <tr><td class="sun">2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td class="mark"><span>8</span></td></tr>
+        <tr><td class="sun">9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+        <tr><td class="sun">16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+        <tr><td class="sun">23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
+        <tr><td class="sun">30</td><td>31</td><td></td><td></td><td></td><td></td><td></td></tr>
       </tbody>
     </table>
   </section>
@@ -245,24 +250,17 @@ body{
     <p class="eyebrow">Location</p>
     <h2 style="margin-bottom:18px">오시는 길</h2>
     <p class="venue-name serif">더 바실리움</p>
-    <p class="venue-addr">경기 성남시 분당구<br>(정확한 주소는 추후 입력)</p>
+    <p class="venue-addr">경기도 성남시 분당구 양현로 322<button class="copy mini" data-acc="경기도 성남시 분당구 양현로 322" data-msg="주소가 복사되었습니다" aria-label="주소 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><br>(야탑동 344-1번지)</p>
+    <p class="venue-tel"><a href="tel:0317887070">031-788-7070</a></p>
 
-    <div id="map"><div class="map-fallback">지도는 카카오맵 API 키를<br>발급해 연결하면 표시됩니다 🗺️<br><br>아래 길찾기 버튼은 바로 작동해요</div></div>
+    <div id="map"><img id="mapImg" src="resource/location.jpg" alt="더 바실리움 약도 및 오시는 길"></div>
+    <p class="map-hint">약도를 탭하면 크게 볼 수 있어요</p>
 
     <div class="nav-btns">
-      <a href="https://map.kakao.com/link/to/더 바실리움,37.4127712,127.1233882" target="_blank">카카오맵</a>
-      <a href="https://map.naver.com/p/entry/place/1781336022" target="_blank">네이버지도</a>
-      <a href="https://apis.openapi.sk.com/tmap/app/routes?name=더 바실리움&lat=37.4127712&lon=127.1233882" target="_blank">티맵</a>
+      <a href="https://map.kakao.com/link/search/더 바실리움" target="_blank">카카오맵</a>
+      <a href="https://map.naver.com/p/search/더 바실리움" target="_blank">네이버지도</a>
     </div>
 
-    <div class="way">
-      <h3>지하철</h3>
-      <p>(교통편 안내는 추후 입력)</p>
-      <h3>주차</h3>
-      <p>(주차 안내는 추후 입력)</p>
-      <h3>버스</h3>
-      <p>(버스 안내는 추후 입력)</p>
-    </div>
   </section>
 
   <div class="divider"><span>✦</span></div>
@@ -327,13 +325,14 @@ slides.addEventListener('scroll',()=>{
   dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
 });
 function openLb(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('open');}
+document.getElementById('mapImg').addEventListener('click',()=>openLb('resource/location.jpg'));
 function closeLb(){document.getElementById('lightbox').classList.remove('open');}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLb();});
 
 // ===== Copy account =====
 document.querySelectorAll('.copy').forEach(b=>{
   b.addEventListener('click',()=>{
-    navigator.clipboard.writeText(b.dataset.acc).then(()=>toast('계좌번호가 복사되었습니다'));
+    navigator.clipboard.writeText(b.dataset.acc).then(()=>toast(b.dataset.msg||'계좌번호가 복사되었습니다'));
   });
 });
 
@@ -344,7 +343,7 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 
 // ===== Share =====
 function shareKakao(){
-  if(navigator.share){navigator.share({title:'재광 ♥ 메이 결혼합니다',text:'2026.10.17 토 오후1시 더 바실리움',url:location.href});}
+  if(navigator.share){navigator.share({title:'재광 ♥ 메이 결혼합니다',text:'2026.08.08 토 오후1시30분 더 바실리움',url:location.href});}
   else{navigator.clipboard.writeText(location.href).then(()=>toast('링크가 복사되었습니다'));}
 }
 
