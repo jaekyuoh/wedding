@@ -410,7 +410,7 @@ function closeLb(){
   VP_META.setAttribute('content', VP_LOCK);
   document.body.classList.remove('lb-open');
   document.body.style.top='';
-  window.scrollTo(0, savedScrollY);
+  window.scrollTo({top: savedScrollY, left: 0, behavior: 'instant'});
 }
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLb();});
 document.addEventListener('keydown',e=>{
