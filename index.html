@@ -95,14 +95,16 @@ body{
 .cal .mark span{position:relative;z-index:1}
 
 /* ===== GALLERY ===== */
-.gallery-wrap{position:relative}
-.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;scrollbar-width:none}
-.slides::-webkit-scrollbar{display:none}
-.slide{flex:0 0 100%;scroll-snap-align:center}
-.slide img{width:100%;height:430px;object-fit:cover;display:block}
-.dots{display:flex;gap:7px;justify-content:center;margin-top:18px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:.3s}
-.dot.on{background:var(--blush);width:20px;border-radius:4px}
+.marquee{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;gap:6px;width:max-content;animation:marquee 40s linear infinite}
+.marquee-track:hover,.marquee-track:active{animation-play-state:paused}
+.thumb{width:220px;aspect-ratio:1;flex-shrink:0;overflow:hidden;cursor:zoom-in;background:#e8e3d8;border-radius:2px}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}
+.thumb:active img{transform:scale(.96)}
+@keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none}}
 .tap-hint{font-size:12px;color:var(--soft);margin-top:14px;letter-spacing:.05em}
 
 /* lightbox */
@@ -243,16 +245,15 @@ body{
   <section class="section fade" style="padding-left:0;padding-right:0">
     <p class="eyebrow">Gallery</p>
     <h2 style="margin-bottom:22px" data-i18n="gallery.title">우리의 순간들</h2>
-    <div class="gallery-wrap">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="갤러리1"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="갤러리2"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="갤러리3"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="갤러리4"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="갤러리5"></div>
+    <div class="marquee">
+      <div class="marquee-track" id="gallery">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="갤러리1"></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="갤러리2"></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="갤러리3"></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="갤러리4"></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="갤러리5"></div>
       </div>
     </div>
-    <div class="dots" id="dots"></div>
     <p class="tap-hint" data-i18n="gallery.hint">사진을 탭하면 크게 볼 수 있어요</p>
   </section>
 
@@ -390,18 +391,11 @@ document.querySelectorAll('.lang-toggle button').forEach(b=>{
   b.addEventListener('click',()=>{localStorage.setItem('lang',b.dataset.lang); applyLang(b.dataset.lang);});
 });
 
-// ===== Gallery dots + lightbox =====
-const slides=document.getElementById('slides');
-const slideEls=slides.querySelectorAll('.slide');
-const dotsBox=document.getElementById('dots');
-slideEls.forEach((s,i)=>{
-  const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsBox.appendChild(d);
-  s.addEventListener('click',()=>openLb(s.querySelector('img').src));
-});
-const dots=dotsBox.querySelectorAll('.dot');
-slides.addEventListener('scroll',()=>{
-  const idx=Math.round(slides.scrollLeft/slides.clientWidth);
-  dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+// ===== Gallery (marquee) + lightbox =====
+const galleryTrack = document.getElementById('gallery');
+galleryTrack.innerHTML += galleryTrack.innerHTML;
+galleryTrack.querySelectorAll('.thumb img').forEach(img=>{
+  img.addEventListener('click',()=>openLb(img.src));
 });
 function openLb(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('open');}
 document.getElementById('mapImg').addEventListener('click',()=>openLb('resource/location.jpg'));
