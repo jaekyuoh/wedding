@@ -87,12 +87,25 @@ body{
 .cal th{color:var(--soft);font-size:12px;padding:8px 0;font-weight:400}
 .cal td{padding:9px 0;font-size:14px;color:#5a574f}
 .cal .sun{color:var(--blush)}
-.cal .mark{position:relative;color:var(--ink);font-weight:700}
+.cal .mark{position:relative;color:var(--ink);font-weight:700;cursor:pointer}
 .cal .mark::after{
   content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:32px;height:32px;border:1.5px solid var(--blush);border-radius:50%;z-index:0;
 }
 .cal .mark span{position:relative;z-index:1}
+.cal-popup-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:79;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.cal-popup-backdrop.open{opacity:1;pointer-events:auto}
+.cal-popup{position:fixed;left:50%;bottom:0;transform:translate(-50%, 100%);
+  width:calc(100% - 32px);max-width:340px;background:#fff;border:1px solid var(--line);
+  border-radius:8px 8px 4px 4px;padding:6px;box-shadow:0 -4px 24px rgba(0,0,0,.12);
+  z-index:80;transition:transform .3s}
+.cal-popup.open{transform:translate(-50%, -20px)}
+.cal-popup button{display:block;width:100%;padding:14px 16px;background:none;border:none;
+  font-family:'Gowun Batang',serif;font-size:14px;color:var(--ink);cursor:pointer;
+  border-radius:4px;letter-spacing:.05em;text-align:left}
+.cal-popup button + button{border-top:1px solid var(--line)}
+.cal-popup button:active{background:var(--sage);color:#fff}
 
 /* ===== GALLERY ===== */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
@@ -321,6 +334,12 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 
 <div class="toast" id="toast"></div>
 
+<div class="cal-popup-backdrop" id="calBackdrop"></div>
+<div class="cal-popup" id="calPopup" role="dialog" aria-label="Add to calendar">
+  <button onclick="addToCalendar('google')" data-i18n="cal.addGoogle">📅  Google 캘린더에 추가</button>
+  <button onclick="addToCalendar('ical')" data-i18n="cal.addApple">🍎  Apple / Outlook에 추가</button>
+</div>
+
 <script>
 // ===== i18n =====
 const ADDR_COPY_BTN = (lbl)=>`<button class="copy mini" data-acc="__ADDR__" data-toast="address" aria-label="${lbl}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>`;
@@ -335,6 +354,9 @@ const i18n = {
     'greet.bride':'<b>메이</b>',
     'cal.date':'2026년 8월 8일','cal.sub':'토요일 오후 1시 30분',
     'cal.sun':'일','cal.mon':'월','cal.tue':'화','cal.wed':'수','cal.thu':'목','cal.fri':'금','cal.sat':'토',
+    'cal.addGoogle':'📅  Google 캘린더에 추가','cal.addApple':'🍎  Apple / Outlook에 추가',
+    'cal.eventTitle':'재광 ♥ 메이 결혼식',
+    'cal.eventDesc':'소중한 분들과 함께하는 결혼식\n장소: 더 바실리움\n주소: 경기도 성남시 분당구 양현로 322',
     'gallery.title':'우리의 순간들','gallery.hint':'사진을 탭하면 크게 볼 수 있어요',
     'map.title':'오시는 길','map.venue':'더 바실리움',
     'map.addr':'경기도 성남시 분당구 양현로 322'+ADDR_COPY_BTN('주소 복사').replace('__ADDR__','경기도 성남시 분당구 양현로 322')+'<br>(야탑동 344-1번지)',
@@ -357,6 +379,9 @@ const i18n = {
     'greet.bride':'<span class="role">Bride</span> <b>May</b>',
     'cal.date':'August 8, 2026','cal.sub':'Saturday · 1:30 PM',
     'cal.sun':'S','cal.mon':'M','cal.tue':'T','cal.wed':'W','cal.thu':'T','cal.fri':'F','cal.sat':'S',
+    'cal.addGoogle':'📅  Add to Google Calendar','cal.addApple':'🍎  Add to Apple / Outlook',
+    'cal.eventTitle':'Jaekwang & May Wedding',
+    'cal.eventDesc':'Our wedding ceremony\nVenue: The Basilium\nAddress: 322 Yanghyeon-ro, Bundang-gu, Seongnam-si',
     'gallery.title':'Our Moments','gallery.hint':'Tap a photo to enlarge',
     'map.title':'How to Get Here','map.venue':'The Basilium',
     'map.addr':'322, Yanghyeon-ro, Bundang-gu, Seongnam-si, Gyeonggi-do'+ADDR_COPY_BTN('Copy address').replace('__ADDR__','322 Yanghyeon-ro, Bundang-gu, Seongnam-si, Gyeonggi-do')+'<br>(Yatap-dong 344-1)',
@@ -424,6 +449,45 @@ document.addEventListener('click',e=>{
     toast(t(`toast.${btn.dataset.toast||'account'}`));
   });
 });
+
+// ===== Calendar add (cell tap → action sheet) =====
+const EVENT_START_UTC='20260808T043000Z';
+const EVENT_END_UTC='20260808T063000Z';
+const EVENT_LOCATION='더 바실리움, 경기도 성남시 분당구 양현로 322';
+const calPopup=document.getElementById('calPopup');
+const calBackdrop=document.getElementById('calBackdrop');
+function openCalPopup(){calPopup.classList.add('open');calBackdrop.classList.add('open');}
+function closeCalPopup(){calPopup.classList.remove('open');calBackdrop.classList.remove('open');}
+calBackdrop.addEventListener('click', closeCalPopup);
+document.querySelector('.cal .mark').addEventListener('click', openCalPopup);
+function addToCalendar(type){
+  const title=t('cal.eventTitle');
+  const desc=t('cal.eventDesc');
+  if(type==='google'){
+    const url='https://calendar.google.com/calendar/render?action=TEMPLATE'
+      +'&text='+encodeURIComponent(title)
+      +'&dates='+EVENT_START_UTC+'/'+EVENT_END_UTC
+      +'&details='+encodeURIComponent(desc)
+      +'&location='+encodeURIComponent(EVENT_LOCATION);
+    window.open(url,'_blank');
+  } else {
+    const ics=[
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//jaekyu-may//Wedding//EN',
+      'BEGIN:VEVENT','UID:wedding-2026-08-08@jaekyu-may','DTSTAMP:20260101T000000Z',
+      'DTSTART:'+EVENT_START_UTC,'DTEND:'+EVENT_END_UTC,
+      'SUMMARY:'+title,'LOCATION:'+EVENT_LOCATION,
+      'DESCRIPTION:'+desc.replace(/\n/g,'\\n'),
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download='wedding-2026-08-08.ics';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  closeCalPopup();
+}
 
 // ===== Toast =====
 let tT;
