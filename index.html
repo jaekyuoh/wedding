@@ -95,14 +95,10 @@ body{
 .cal .mark span{position:relative;z-index:1}
 
 /* ===== GALLERY ===== */
-.gallery-wrap{position:relative}
-.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;scrollbar-width:none}
-.slides::-webkit-scrollbar{display:none}
-.slide{flex:0 0 100%;scroll-snap-align:center}
-.slide img{width:100%;height:430px;object-fit:cover;display:block}
-.dots{display:flex;gap:7px;justify-content:center;margin-top:18px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:.3s}
-.dot.on{background:var(--blush);width:20px;border-radius:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.thumb{aspect-ratio:1;overflow:hidden;cursor:zoom-in;background:#e8e3d8}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}
+.thumb:active img{transform:scale(.96)}
 .tap-hint{font-size:12px;color:var(--soft);margin-top:14px;letter-spacing:.05em}
 
 /* lightbox */
@@ -243,16 +239,17 @@ body{
   <section class="section fade" style="padding-left:0;padding-right:0">
     <p class="eyebrow">Gallery</p>
     <h2 style="margin-bottom:22px" data-i18n="gallery.title">우리의 순간들</h2>
-    <div class="gallery-wrap">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="갤러리1"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="갤러리2"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="갤러리3"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="갤러리4"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="갤러리5"></div>
-      </div>
+    <div class="grid" id="gallery">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="갤러리1"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="갤러리2"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="갤러리3"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="갤러리4"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="갤러리5"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80" alt="갤러리6"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="갤러리7"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=800&q=80" alt="갤러리8"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=800&q=80" alt="갤러리9"></div>
     </div>
-    <div class="dots" id="dots"></div>
     <p class="tap-hint" data-i18n="gallery.hint">사진을 탭하면 크게 볼 수 있어요</p>
   </section>
 
@@ -390,18 +387,9 @@ document.querySelectorAll('.lang-toggle button').forEach(b=>{
   b.addEventListener('click',()=>{localStorage.setItem('lang',b.dataset.lang); applyLang(b.dataset.lang);});
 });
 
-// ===== Gallery dots + lightbox =====
-const slides=document.getElementById('slides');
-const slideEls=slides.querySelectorAll('.slide');
-const dotsBox=document.getElementById('dots');
-slideEls.forEach((s,i)=>{
-  const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsBox.appendChild(d);
-  s.addEventListener('click',()=>openLb(s.querySelector('img').src));
-});
-const dots=dotsBox.querySelectorAll('.dot');
-slides.addEventListener('scroll',()=>{
-  const idx=Math.round(slides.scrollLeft/slides.clientWidth);
-  dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+// ===== Gallery + lightbox =====
+document.querySelectorAll('#gallery .thumb img').forEach(img=>{
+  img.addEventListener('click',()=>openLb(img.src));
 });
 function openLb(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('open');}
 document.getElementById('mapImg').addEventListener('click',()=>openLb('resource/location.jpg'));
