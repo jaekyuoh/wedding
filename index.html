@@ -105,7 +105,7 @@ body{
 .lightbox{position:fixed;inset:0;background:rgba(28,26,22,.94);z-index:100;
   display:none;align-items:center;justify-content:center;padding:20px}
 .lightbox.open{display:flex}
-.lightbox img{max-width:100%;max-height:88vh;object-fit:contain}
+.lightbox img{max-width:100%;max-height:88vh;object-fit:contain;touch-action:pinch-zoom}
 .lightbox .close{position:absolute;top:24px;right:26px;color:#fff;font-size:30px;
   background:none;border:none;cursor:pointer;line-height:1}
 .lb-arrow{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;
@@ -400,6 +400,9 @@ document.querySelectorAll('.lang-toggle button').forEach(b=>{
 });
 
 // ===== Gallery + lightbox =====
+const VP_META=document.querySelector('meta[name="viewport"]');
+const VP_LOCK='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+const VP_FREE='width=device-width, initial-scale=1.0';
 const galleryImgs=[...document.querySelectorAll('#gallery .thumb img')];
 const lbImages=galleryImgs.map(img=>img.src);
 let lbIndex=-1;
@@ -419,6 +422,7 @@ function openLb(src,index){
     counter.classList.add('hidden');
     arrows.forEach(a=>a.classList.add('hidden'));
   }
+  VP_META.setAttribute('content', VP_FREE);
   document.getElementById('lightbox').classList.add('open');
 }
 function navLb(delta){
@@ -428,7 +432,7 @@ function navLb(delta){
   document.getElementById('lbCounter').textContent=`${lbIndex+1} / ${lbImages.length}`;
 }
 document.getElementById('mapImg').addEventListener('click',()=>openLb('resource/location.jpg'));
-function closeLb(){document.getElementById('lightbox').classList.remove('open');}
+function closeLb(){document.getElementById('lightbox').classList.remove('open');VP_META.setAttribute('content', VP_LOCK);}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLb();});
 document.addEventListener('keydown',e=>{
   if(!document.getElementById('lightbox').classList.contains('open')) return;
