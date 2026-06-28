@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title data-i18n="page.title">재광 ♥ 메이의 결혼식에 초대합니다</title>
+<title data-i18n="page.title">오재광 ♥ 구봄의 결혼식에 초대합니다</title>
 
-<!-- 카카오톡 공유 미리보기용 메타태그 (배포 후 URL/이미지 경로 수정) -->
-<meta property="og:title" content="재광 ♥ 메이 결혼합니다">
+<!-- 카카오톡 공유 미리보기용 메타태그 (배포 후 og:url 추가, og:image는 절대 URL로 교체) -->
+<meta property="og:title" content="오재광 ♥ 구봄 결혼합니다">
 <meta property="og:description" content="2026년 8월 8일 토요일 오후 1시 30분 · 더 바실리움">
 <meta property="og:type" content="website">
-<!-- <meta property="og:image" content="https://내주소/img/main.jpg"> -->
+<!-- <meta property="og:image" content="https://내주소/resource/photo/hero.jpg"> -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,22 +143,14 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
   font-family:'Nanum Myeongjo',serif;font-weight:700}
 .way p{font-size:14px;color:#5a574f;margin-bottom:18px;line-height:1.9}
 
-/* ===== CONTACT / ACCOUNT ===== */
-.contact-row{display:flex;justify-content:center;gap:12px;margin-top:6px}
-.contact-row a{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  text-decoration:none;color:var(--ink);font-size:13px;
-}
-.circle{width:50px;height:50px;border-radius:50%;border:1px solid var(--line);
-  background:#fff;display:flex;align-items:center;justify-content:center;font-size:20px}
-
+/* ===== ACCOUNT ===== */
 .acc{margin-top:14px;border:1px solid var(--line);background:#fff}
 .acc-head{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;
   cursor:pointer;font-size:14px;color:var(--ink)}
 .acc-head .arrow{transition:.3s;color:var(--soft)}
 .acc.open .arrow{transform:rotate(180deg)}
 .acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.acc.open .acc-body{max-height:300px}
+.acc.open .acc-body{max-height:420px}
 .acc-item{padding:14px 20px;border-top:1px solid var(--line);text-align:left;
   display:flex;justify-content:space-between;align-items:center;gap:10px}
 .acc-item .who{font-size:12px;color:var(--soft)}
@@ -208,9 +200,9 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
   <!-- HERO -->
   <header class="hero">
     <div class="hero-frame">
-      <img class="hero-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="메인 사진">
+      <img class="hero-img" src="resource/photo/hero.jpg" alt="메인 사진">
     </div>
-    <p class="hero-names serif" data-i18n-html="hero.names">재광<span class="amp">&</span>메이</p>
+    <p class="hero-names serif" data-i18n-html="hero.names">오재광<span class="amp">&</span>구봄</p>
     <p class="hero-date">2026 · 08 · 08 SAT 1:30 PM</p>
     <div class="hero-line"></div>
   </header>
@@ -222,8 +214,8 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
     <p data-i18n-html="greet.p1">서로 마주보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며<br>걸어가려 합니다.</p>
     <p data-i18n-html="greet.p2">저희 두 사람이 새로운 시작을 하는 날<br>귀한 걸음으로 축복해 주시면<br>더없는 기쁨으로 간직하겠습니다.</p>
     <div class="parents">
-      <div data-i18n-html="greet.groom"><b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>재광</b></div>
-      <div data-i18n-html="greet.bride"><b>메이</b></div>
+      <div data-i18n-html="greet.groom"><b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>오재광</b></div>
+      <div data-i18n-html="greet.bride"><b>Hiew Min Chung</b> · <b>Jocelyn Enriquez</b><span class="role">의 딸</span> <b>구봄</b></div>
     </div>
   </section>
 
@@ -254,15 +246,15 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
     <p class="eyebrow">Gallery</p>
     <h2 style="margin-bottom:22px" data-i18n="gallery.title">우리의 순간들</h2>
     <div class="grid" id="gallery">
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="갤러리1"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="갤러리2"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="갤러리3"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="갤러리4"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="갤러리5"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80" alt="갤러리6"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="갤러리7"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=800&q=80" alt="갤러리8"></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=800&q=80" alt="갤러리9"></div>
+      <div class="thumb"><img src="resource/photo/thumb/1.jpg" data-full="resource/photo/1.jpg" alt="갤러리1" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/2.jpg" data-full="resource/photo/2.jpg" alt="갤러리2" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/3.jpg" data-full="resource/photo/3.jpg" alt="갤러리3" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/4.jpg" data-full="resource/photo/4.jpg" alt="갤러리4" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/5.jpg" data-full="resource/photo/5.jpg" alt="갤러리5" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/6.jpg" data-full="resource/photo/6.jpg" alt="갤러리6" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/7.jpg" data-full="resource/photo/7.jpg" alt="갤러리7" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/8.jpg" data-full="resource/photo/8.jpg" alt="갤러리8" loading="lazy"></div>
+      <div class="thumb"><img src="resource/photo/thumb/9.jpg" data-full="resource/photo/9.jpg" alt="갤러리9" loading="lazy"></div>
     </div>
     <p class="tap-hint" data-i18n="gallery.hint">사진을 탭하면 크게 볼 수 있어요</p>
   </section>
@@ -289,28 +281,39 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 
   <div class="divider"><span>✦</span></div>
 
-  <!-- CONTACT & ACCOUNT -->
+  <!-- ACCOUNT -->
   <section class="section fade">
-    <p class="eyebrow">Contact</p>
-    <h2 style="margin-bottom:24px" data-i18n="contact.title">연락하기</h2>
-    <div class="contact-row" style="margin-bottom:14px">
-      <a href="tel:01012345678"><span class="circle">📞</span><span data-i18n="contact.groom">신랑에게</span></a>
-      <a href="sms:01012345678"><span class="circle">✉️</span><span data-i18n="contact.sms">문자하기</span></a>
-      <a href="tel:01087654321"><span class="circle">📞</span><span data-i18n="contact.bride">신부에게</span></a>
-    </div>
+    <p class="eyebrow">With Gratitude</p>
+    <h2 style="margin-bottom:24px" data-i18n="acc.title">마음 전하실 곳</h2>
 
-    <div class="acc" id="acc">
+    <div class="acc">
       <div class="acc-head" onclick="this.parentNode.classList.toggle('open')">
-        <span data-i18n="acc.heart">💛 마음 전하실 곳</span><span class="arrow">▾</span>
+        <span data-i18n="acc.groomSide">🤵 신랑 측</span><span class="arrow">▾</span>
       </div>
       <div class="acc-body">
         <div class="acc-item">
-          <div><div class="who" data-i18n="acc.groom">신랑 재광</div><div class="num" data-i18n="acc.groomNum">하나 123-456789-01234</div></div>
-          <button class="copy" data-acc="하나 123-456789-01234" data-toast="account" data-i18n="acc.copy">복사</button>
+          <div><div class="who" data-i18n="acc.groom">신랑 오재광</div><div class="num">농협 356-1658-5665-73</div></div>
+          <button class="copy" data-acc="농협 356-1658-5665-73" data-toast="account" data-i18n="acc.copy">복사</button>
         </div>
         <div class="acc-item">
-          <div><div class="who" data-i18n="acc.bride">신부 메이</div><div class="num" data-i18n="acc.brideNum">국민 9876-54-321098</div></div>
-          <button class="copy" data-acc="국민 9876-54-321098" data-toast="account" data-i18n="acc.copy">복사</button>
+          <div><div class="who" data-i18n="acc.groom">신랑 오재광</div><div class="num">Maybank 112866073826</div></div>
+          <button class="copy" data-acc="Maybank 112866073826" data-toast="account" data-i18n="acc.copy">복사</button>
+        </div>
+        <div class="acc-item">
+          <div><div class="who" data-i18n="acc.groomMother">어머니 박화숙</div><div class="num">KB국민 662002-01-207523</div></div>
+          <button class="copy" data-acc="KB국민 662002-01-207523" data-toast="account" data-i18n="acc.copy">복사</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <div class="acc-head" onclick="this.parentNode.classList.toggle('open')">
+        <span data-i18n="acc.brideSide">👰 신부 측</span><span class="arrow">▾</span>
+      </div>
+      <div class="acc-body">
+        <div class="acc-item">
+          <div><div class="who" data-i18n="acc.bride">신부 구봄</div><div class="num">Maybank 160037094790</div></div>
+          <button class="copy" data-acc="Maybank 160037094790" data-toast="account" data-i18n="acc.copy">복사</button>
         </div>
       </div>
     </div>
@@ -319,7 +322,7 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
   <!-- FOOTER -->
   <footer class="footer fade">
     <p class="ev serif" style="letter-spacing:.3em;font-size:12px">THANK YOU</p>
-    <p class="names" data-i18n="footer.names">재광 ♥ 메이</p>
+    <p class="names" data-i18n="footer.names">오재광 ♥ 구봄</p>
     <p class="thx" data-i18n-html="footer.thx">저희의 시작을 함께해 주셔서<br>진심으로 감사합니다.</p>
     <button class="share" onclick="shareKakao()" data-i18n="footer.share">💬 카카오톡으로 공유하기</button>
   </footer>
@@ -345,54 +348,52 @@ body.lb-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 const ADDR_COPY_BTN = (lbl)=>`<button class="copy mini" data-acc="__ADDR__" data-toast="address" aria-label="${lbl}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>`;
 const i18n = {
   ko: {
-    'page.title':'재광 ♥ 메이의 결혼식에 초대합니다',
-    'hero.names':'재광<span class="amp">&</span>메이',
+    'page.title':'오재광 ♥ 구봄의 결혼식에 초대합니다',
+    'hero.names':'오재광<span class="amp">&</span>구봄',
     'greet.title':'소중한 분들을 초대합니다',
     'greet.p1':'서로 마주보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며<br>걸어가려 합니다.',
     'greet.p2':'저희 두 사람이 새로운 시작을 하는 날<br>귀한 걸음으로 축복해 주시면<br>더없는 기쁨으로 간직하겠습니다.',
-    'greet.groom':'<b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>재광</b>',
-    'greet.bride':'<b>메이</b>',
+    'greet.groom':'<b>오연철</b> · <b>박화숙</b><span class="role">의 아들</span> <b>오재광</b>',
+    'greet.bride':'<b>Hiew Min Chung</b> · <b>Jocelyn Enriquez</b><span class="role">의 딸</span> <b>구봄</b>',
     'cal.date':'2026년 8월 8일','cal.sub':'토요일 오후 1시 30분',
     'cal.sun':'일','cal.mon':'월','cal.tue':'화','cal.wed':'수','cal.thu':'목','cal.fri':'금','cal.sat':'토',
     'cal.addGoogle':'📅  Google 캘린더에 추가','cal.addApple':'🍎  Apple / Outlook에 추가',
-    'cal.eventTitle':'재광 ♥ 메이 결혼식',
+    'cal.eventTitle':'오재광 ♥ 구봄 결혼식',
     'cal.eventDesc':'소중한 분들과 함께하는 결혼식\n장소: 더 바실리움\n주소: 경기도 성남시 분당구 양현로 322',
     'gallery.title':'우리의 순간들','gallery.hint':'사진을 탭하면 크게 볼 수 있어요',
     'map.title':'오시는 길','map.venue':'더 바실리움',
     'map.addr':'경기도 성남시 분당구 양현로 322'+ADDR_COPY_BTN('주소 복사').replace('__ADDR__','경기도 성남시 분당구 양현로 322')+'<br>(야탑동 344-1번지)',
     'map.hint':'약도를 탭하면 크게 볼 수 있어요',
-    'contact.title':'연락하기','contact.groom':'신랑에게','contact.sms':'문자하기','contact.bride':'신부에게',
-    'acc.heart':'💛 마음 전하실 곳',
-    'acc.groom':'신랑 재광','acc.groomNum':'하나 123-456789-01234',
-    'acc.bride':'신부 메이','acc.brideNum':'국민 9876-54-321098','acc.copy':'복사',
-    'footer.names':'재광 ♥ 메이','footer.thx':'저희의 시작을 함께해 주셔서<br>진심으로 감사합니다.','footer.share':'💬 카카오톡으로 공유하기',
+    'acc.title':'마음 전하실 곳',
+    'acc.groomSide':'🤵 신랑 측','acc.brideSide':'👰 신부 측',
+    'acc.groom':'신랑 오재광','acc.groomMother':'어머니 박화숙','acc.bride':'신부 구봄','acc.copy':'복사',
+    'footer.names':'오재광 ♥ 구봄','footer.thx':'저희의 시작을 함께해 주셔서<br>진심으로 감사합니다.','footer.share':'💬 카카오톡으로 공유하기',
     'toast.address':'주소가 복사되었습니다','toast.account':'계좌번호가 복사되었습니다','toast.link':'링크가 복사되었습니다',
-    'share.title':'재광 ♥ 메이 결혼합니다','share.text':'2026.08.08 토 오후1시30분 더 바실리움'
+    'share.title':'오재광 ♥ 구봄 결혼합니다','share.text':'2026.08.08 토 오후1시30분 더 바실리움'
   },
   en: {
-    'page.title':'The Wedding of Jaekwang & May',
-    'hero.names':'Jaekwang<span class="amp">&</span>May',
+    'page.title':'The Wedding of Jae & May',
+    'hero.names':'Jae<span class="amp">&</span>May',
     'greet.title':'You are warmly invited',
     'greet.p1':'Two hearts that grew side by side<br>now turn together<br>to walk toward one horizon.',
     'greet.p2':'On the day we begin our new chapter,<br>your presence and blessing<br>would mean the world to us.',
-    'greet.groom':'<span class="role">Groom</span> <b>Jaekwang</b>',
-    'greet.bride':'<span class="role">Bride</span> <b>May</b>',
+    'greet.groom':'<b>Yeoncheol Oh</b> · <b>Hwasook Park</b><span class="role">\'s son</span> <b>Jae</b>',
+    'greet.bride':'<b>Hiew Min Chung</b> · <b>Jocelyn Enriquez</b><span class="role">\'s daughter</span> <b>May</b>',
     'cal.date':'August 8, 2026','cal.sub':'Saturday · 1:30 PM',
     'cal.sun':'S','cal.mon':'M','cal.tue':'T','cal.wed':'W','cal.thu':'T','cal.fri':'F','cal.sat':'S',
     'cal.addGoogle':'📅  Add to Google Calendar','cal.addApple':'🍎  Add to Apple / Outlook',
-    'cal.eventTitle':'Jaekwang & May Wedding',
+    'cal.eventTitle':'Jae & May Wedding',
     'cal.eventDesc':'Our wedding ceremony\nVenue: The Basilium\nAddress: 322 Yanghyeon-ro, Bundang-gu, Seongnam-si',
     'gallery.title':'Our Moments','gallery.hint':'Tap a photo to enlarge',
     'map.title':'How to Get Here','map.venue':'The Basilium',
     'map.addr':'322, Yanghyeon-ro, Bundang-gu, Seongnam-si, Gyeonggi-do'+ADDR_COPY_BTN('Copy address').replace('__ADDR__','322 Yanghyeon-ro, Bundang-gu, Seongnam-si, Gyeonggi-do')+'<br>(Yatap-dong 344-1)',
     'map.hint':'Tap the map to enlarge',
-    'contact.title':'Get in Touch','contact.groom':'Call Groom','contact.sms':'Send SMS','contact.bride':'Call Bride',
-    'acc.heart':'💛 With our gratitude',
-    'acc.groom':'Groom · Jaekwang','acc.groomNum':'Hana 123-456789-01234',
-    'acc.bride':'Bride · May','acc.brideNum':'KB 9876-54-321098','acc.copy':'Copy',
-    'footer.names':'Jaekwang ♥ May','footer.thx':'Thank you for sharing<br>the beginning of our journey.','footer.share':'💬 Share via KakaoTalk',
+    'acc.title':'With our gratitude',
+    'acc.groomSide':'🤵 Groom\'s side','acc.brideSide':'👰 Bride\'s side',
+    'acc.groom':'Groom · Jae','acc.groomMother':'Mother · Hwasook Park','acc.bride':'Bride · May','acc.copy':'Copy',
+    'footer.names':'Jae ♥ May','footer.thx':'Thank you for sharing<br>the beginning of our journey.','footer.share':'💬 Share via KakaoTalk',
     'toast.address':'Address copied','toast.account':'Account number copied','toast.link':'Link copied',
-    'share.title':'Jaekwang & May are getting married','share.text':'Aug 8, 2026 · Sat 1:30 PM · The Basilium'
+    'share.title':'Jae & May are getting married','share.text':'Aug 8, 2026 · Sat 1:30 PM · The Basilium'
   }
 };
 let currentLang='ko';
@@ -419,7 +420,7 @@ const VP_LOCK='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-sc
 const VP_FREE='width=device-width, initial-scale=1.0';
 let savedScrollY=0;
 document.querySelectorAll('#gallery .thumb img').forEach(img=>{
-  img.addEventListener('click',()=>openLb(img.src));
+  img.addEventListener('click',()=>openLb(img.dataset.full || img.src));
 });
 function openLb(src){
   savedScrollY=window.scrollY;
